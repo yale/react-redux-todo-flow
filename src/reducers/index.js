@@ -1,10 +1,17 @@
-import { combineReducers } from 'redux'
-import todos from './todos'
-import visibilityFilter from './visibilityFilter'
+// @flow
+import { combineReducers } from 'redux';
+import todos from './todos';
+import visibilityFilter from './visibilityFilter';
 
-const rootReducer = combineReducers({
+const reducers = {
   todos,
-  visibilityFilter
-})
+  visibilityFilter,
+};
 
-export default rootReducer
+type Reducers = typeof reducers;
+type $ExtractFunctionReturn = <V>(v: (...args: any) => V) => V;
+export type State = $ObjMap<Reducers, $ExtractFunctionReturn>;
+
+const rootReducer = combineReducers(reducers);
+
+export default rootReducer;

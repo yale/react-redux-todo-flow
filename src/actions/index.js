@@ -1,9 +1,48 @@
-import * as types from '../constants/ActionTypes'
+// @flow
+import {
+  ADD_TODO,
+  DELETE_TODO,
+  EDIT_TODO,
+  COMPLETE_ALL_TODOS,
+  COMPLETE_TODO,
+  CLEAR_COMPLETED,
+  SET_VISIBILITY_FILTER,
+} from '../constants/ActionTypes';
 
-export const addTodo = text => ({ type: types.ADD_TODO, text })
-export const deleteTodo = id => ({ type: types.DELETE_TODO, id })
-export const editTodo = (id, text) => ({ type: types.EDIT_TODO, id, text })
-export const completeTodo = id => ({ type: types.COMPLETE_TODO, id })
-export const completeAllTodos = () => ({ type: types.COMPLETE_ALL_TODOS })
-export const clearCompleted = () => ({ type: types.CLEAR_COMPLETED })
-export const setVisibilityFilter = filter => ({ type: types.SET_VISIBILITY_FILTER, filter})
+export const addTodo = (text: string) => ({
+  type: ADD_TODO,
+  text,
+});
+export const deleteTodo = (id: number) => ({
+  type: DELETE_TODO,
+  id,
+});
+
+export const editTodo = (id: number, text: string) => ({
+  type: EDIT_TODO,
+  id,
+  text,
+});
+export const completeTodo = (id: number) => ({
+  type: COMPLETE_TODO,
+  id,
+});
+export const completeAllTodos = () => ({
+  type: COMPLETE_ALL_TODOS,
+});
+export const clearCompleted = () => ({ type: CLEAR_COMPLETED });
+export const setVisibilityFilter = (filter: string) => ({
+  type: SET_VISIBILITY_FILTER,
+  filter,
+});
+
+type ExtractReturn<Fn> = $Call<<T>((...Iterable<any>) => T) => T, Fn>;
+
+export type Actions =
+  | ExtractReturn<typeof addTodo>
+  | ExtractReturn<typeof deleteTodo>
+  | ExtractReturn<typeof editTodo>
+  | ExtractReturn<typeof completeTodo>
+  | ExtractReturn<typeof completeAllTodos>
+  | ExtractReturn<typeof clearCompleted>
+  | ExtractReturn<typeof setVisibilityFilter>;

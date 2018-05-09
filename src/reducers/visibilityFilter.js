@@ -1,13 +1,17 @@
-import { SET_VISIBILITY_FILTER } from '../constants/ActionTypes'
-import { SHOW_ALL } from '../constants/TodoFilters'
+// @flow
+import { SET_VISIBILITY_FILTER } from '../constants/ActionTypes';
+import { SHOW_ALL } from '../constants/TodoFilters';
+import type { Actions } from '../actions';
 
-const visibilityFilter = (state = SHOW_ALL, action) => {
+type State = string;
+
+const visibilityFilter = (state: State = SHOW_ALL, action: Actions) => {
   switch (action.type) {
     case SET_VISIBILITY_FILTER:
-      return action.filter
+      return action.filter;
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default visibilityFilter
+export default visibilityFilter;

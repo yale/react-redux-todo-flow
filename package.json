@@ -3,6 +3,11 @@
   "version": "0.0.1",
   "private": true,
   "devDependencies": {
+    "babel-eslint": "^8.2.3",
+    "eslint-plugin-flowtype": "^2.46.3",
+    "eslint-config-react-app": "^2.1.0",
+    "prettier-eslint": "^9.8.1",
+    "flow-bin": "^0.71.0",
     "react-scripts": "^1.1.4",
     "react-test-renderer": "^16.3.1"
   },
