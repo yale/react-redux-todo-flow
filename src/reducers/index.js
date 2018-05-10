@@ -2,6 +2,7 @@
 import { combineReducers } from 'redux';
 import todos from './todos';
 import visibilityFilter from './visibilityFilter';
+import type { $Return } from '../flowHelpers';
 
 const reducers = {
   todos,
@@ -9,8 +10,7 @@ const reducers = {
 };
 
 type Reducers = typeof reducers;
-type $ExtractFunctionReturn = <V>(v: (...args: any) => V) => V;
-export type State = $ObjMap<Reducers, $ExtractFunctionReturn>;
+export type State = $ObjMap<Reducers, $Return>;
 
 const rootReducer = combineReducers(reducers);
 

@@ -1,4 +1,6 @@
 // @flow
+import type { $ExtractReturn } from '../flowHelpers';
+
 import {
   ADD_TODO,
   DELETE_TODO,
@@ -36,13 +38,11 @@ export const setVisibilityFilter = (filter: string) => ({
   filter,
 });
 
-type ExtractReturn<Fn> = $Call<<T>((...Iterable<any>) => T) => T, Fn>;
-
 export type Actions =
-  | ExtractReturn<typeof addTodo>
-  | ExtractReturn<typeof deleteTodo>
-  | ExtractReturn<typeof editTodo>
-  | ExtractReturn<typeof completeTodo>
-  | ExtractReturn<typeof completeAllTodos>
-  | ExtractReturn<typeof clearCompleted>
-  | ExtractReturn<typeof setVisibilityFilter>;
+  | $ExtractReturn<typeof addTodo>
+  | $ExtractReturn<typeof deleteTodo>
+  | $ExtractReturn<typeof editTodo>
+  | $ExtractReturn<typeof completeTodo>
+  | $ExtractReturn<typeof completeAllTodos>
+  | $ExtractReturn<typeof clearCompleted>
+  | $ExtractReturn<typeof setVisibilityFilter>;
